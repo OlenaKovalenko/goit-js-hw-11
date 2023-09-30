@@ -1,10 +1,14 @@
 import axios from 'axios';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
+import SimpleLightbox from "simplelightbox";
+import "simplelightbox/dist/simple-lightbox.min.css";
+
 import { refs } from './refs';
+import { fetchBySearch } from './api';
 
 
-const API_KEY = '39708192-1d0c61ff60ff411770af0a0fc';
-const BASE_URL = 'https://pixabay.com/api/';
+// const API_KEY = '39708192-1d0c61ff60ff411770af0a0fc';
+// const BASE_URL = 'https://pixabay.com/api/';
 
 refs.searchForm.addEventListener('submit', onFormSubmit);
 
@@ -15,14 +19,14 @@ async function onFormSubmit(event) {
     const search = formElement.searchQuery.value;
     console.log(search);
 
-    const searchParams = new URLSearchParams({
-        image_type: "photo",
-        orientation: "horizontale",
-        safesearch: "true",
-});
+//     const searchParams = new URLSearchParams({
+//         image_type: "photo",
+//         orientation: "horizontale",
+//         safesearch: "true",
+// });
 
-    const response = await axios.get(`${BASE_URL}?key=${API_KEY}&q=${search}&${searchParams}`);
+//     const response = await axios.get(`${BASE_URL}?key=${API_KEY}&q=${search}&${searchParams}`);
 
-
+    await fetchBySearch(search);
     
 }
