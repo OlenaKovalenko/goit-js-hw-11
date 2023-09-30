@@ -6,12 +6,14 @@ export async function fetchBySearch(searchWord) {
     const BASE_URL = 'https://pixabay.com/api/';
         
     const searchParams = new URLSearchParams({
+        key: API_KEY,
+        q: searchWord,
         image_type: "photo",
         orientation: "horizontale",
-        safesearch: "true",
+        safesearch: true,
     });
         
-    const response = await axios.get(`${BASE_URL}?key=${API_KEY}&q=${searchWord}&${searchParams}`);
+    const response = await axios.get(`${BASE_URL}?${searchParams}`);
     return response.hits;
    
         
