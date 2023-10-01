@@ -59,6 +59,19 @@ img {
   object-fit: cover;
 }
 
+.visually-hidden {
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  border: 0;
+  padding: 0;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  margin: -1px;
+}
+
 .load-more {
   display: block;
   margin-left: auto;
@@ -71,4 +84,5 @@ img {
   font-size: 24px;
   background-color: aqua;
   border-radius: 10px;
+  border: none;
 }

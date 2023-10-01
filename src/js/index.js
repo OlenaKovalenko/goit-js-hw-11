@@ -18,20 +18,21 @@ async function onFormSubmit(event) {
     try {
     const formElement = event.currentTarget.elements;
     const search = formElement.searchQuery.value;
-    // console.log(search);
         
     const response = await fetchBySearch(search, page);
+    const totalHits = response.totalHits;
     const cards = response.hits;
         
     if (cards.length > 0) {
         const markup = await createMarkup(cards);
+        Notify.success(`Hooray! We found ${totalHits} images`);
 
         refs.galleryContainer.insertAdjacentHTML('beforeend', markup);
-        refs.loadMore.hidden = false;
+        refs.loadMore.classList.remove('visually-hidden');
 
         // event.currentTarget.reset();
 
-    // const lightbox = new SimpleLightbox('.gallery a');
+        const simplelightbox = new SimpleLightbox('.gallery a').refresh();
         
     } else {
         refs.galleryContainer.innerHTML = '';

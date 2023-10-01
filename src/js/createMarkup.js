@@ -1,7 +1,7 @@
 export async function createMarkup(arr) {
     return arr.map(cardData => {
-        const { webformatURL, largeImageUR, tags, likes, views, comments, downloads } = cardData;
-        return `<a class="gallery__link" href="${largeImageUR}">
+        const { webformatURL, largeImageURL, tags, likes, views, comments, downloads } = cardData;
+        return `<a class="gallery__link" href="${largeImageURL}">
         <div class="photo-card">
             <img src="${webformatURL}" alt="${tags}" loading="lazy" />
             <div class="info">
