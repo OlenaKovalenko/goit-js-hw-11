@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 export async function fetchBySearch(searchWord) {
-    // try {
+    try {
     const API_KEY = '39708192-1d0c61ff60ff411770af0a0fc';
     const BASE_URL = 'https://pixabay.com/api/';
         
@@ -17,10 +17,10 @@ export async function fetchBySearch(searchWord) {
     return response.data;
    
         
-    // const response = await axios.get(`${BASE_URL}/images/search?breed_ids=${breedId}`);
-    // return response.data;
-//   }
-//   catch (error) {
-//     throw error;
-//   }
+    const response = await axios.get(`${BASE_URL}/images/search?breed_ids=${breedId}`);
+    return response.data;
+  }
+  catch (error) {
+    throw error;
+  }
 }
