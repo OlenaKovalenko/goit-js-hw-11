@@ -17,20 +17,18 @@ async function onFormSubmit(event) {
 
     try {
     const formElement = event.currentTarget.elements;
-    const search = formElement.searchQuery.value;
-        
-    const response = await fetchBySearch(search, page);
+    const searchWord = formElement.searchQuery.value.trim();
+    
+    const response = await fetchBySearch(searchWord, page);
     const totalHits = response.totalHits;
     const cards = response.hits;
         
     if (cards.length > 0) {
-        const markup = await createMarkup(cards);
+        const markup = await createMarkup(searchWord, cards);
         Notify.success(`Hooray! We found ${totalHits} images`);
 
         refs.galleryContainer.insertAdjacentHTML('beforeend', markup);
         refs.loadMore.classList.remove('visually-hidden');
-
-        // event.currentTarget.reset();
 
         const simplelightbox = new SimpleLightbox('.gallery a').refresh();
         
@@ -48,7 +46,7 @@ let page = 1;
 
 async function onLoadMore() {
     page += 1;
-    fetchBySearch(search, page)
+    fetchBySearch(page)
         .then(result => {
             const markup = createMarkup(result.hits);
             refs.galleryContainer.insertAdjacentHTML('beforeend', markup);
