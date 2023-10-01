@@ -8,34 +8,49 @@ import { fetchBySearch } from './api';
 import { createMarkup } from './createMarkup';
 
 refs.searchForm.addEventListener('submit', onFormSubmit);
+refs.loadMore.addEventListener('click', onLoadMore);
+refs.loadMore.hidden = true;
 
 async function onFormSubmit(event) {
     event.preventDefault();
+    refs.galleryContainer.innerHTML = '';
 
     try {
     const formElement = event.currentTarget.elements;
     const search = formElement.searchQuery.value;
-    console.log(search);
-
-    const response = await fetchBySearch(search);
+    // console.log(search);
+        
+    const response = await fetchBySearch(search, page);
     const cards = response.hits;
         
     if (cards.length > 0) {
         const markup = await createMarkup(cards);
 
         refs.galleryContainer.insertAdjacentHTML('beforeend', markup);
-    } else {
-        Notify.failure("Sorry, there are no images matching your search query. Please try again.", error);
-        console.log("Sorry, there are no images matching your search query. Please try again.");
+        refs.loadMore.hidden = false;
+
+        // event.currentTarget.reset();
+
+    // const lightbox = new SimpleLightbox('.gallery a');
         
+    } else {
+        refs.galleryContainer.innerHTML = '';
+        Notify.failure("Sorry, there are no images matching your search query. Please try again.", error);
         }
     
-    
     } catch (error) {
-        console.log("Sorry, there are no images matching your search query. Please try again.");
         Notify.failure("Sorry, there are no images matching your search query. Please try again.", error);
     }
+}
 
-    
-    
+let page = 1;  
+
+async function onLoadMore() {
+    page += 1;
+    fetchBySearch(search, page)
+        .then(result => {
+            const markup = createMarkup(result.hits);
+            refs.galleryContainer.insertAdjacentHTML('beforeend', markup);
+
+    })
 }
