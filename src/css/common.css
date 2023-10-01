@@ -1,0 +1,46 @@
+.search-form {
+  display: flex;
+  justify-content: center;
+  background-color: blue;
+  color: black;
+  font-size: 24px;
+  margin-bottom: 15px;
+}
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+.gallery__link {
+  text-decoration: none;
+  color: black;
+  font-size: 12px;
+  width: calc((100% - 3 * 5px) / 4);
+}
+.photo-card {
+  /* width: calc((100% - 3 * 5px) / 4); */
+}
+
+.info {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  justify-content: space-between;
+  align-items: center;
+  padding-right: 10px;
+  padding-left: 10px;
+}
+
+/* .info-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+} */
+
+img {
+  height: 150px;
+  width: 250px;
+  background-size: cover;
+}

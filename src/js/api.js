@@ -14,7 +14,7 @@ export async function fetchBySearch(searchWord) {
     });
         
     const response = await axios.get(`${BASE_URL}?${searchParams}`);
-    return response.hits;
+    return response.data;
    
         
     // const response = await axios.get(`${BASE_URL}/images/search?breed_ids=${breedId}`);
