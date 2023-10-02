@@ -23,7 +23,7 @@ async function onFormSubmit(event) {
     const formElement = event.currentTarget.elements;
     searchQuery = formElement.searchQuery.value.trim();
     
-    const response = await fetchBySearch(searchQuery);
+    const response = await fetchBySearch(searchQuery, page);
     const totalHits = response.totalHits;
     const cards = response.hits;
         
@@ -64,10 +64,10 @@ async function onFormSubmit(event) {
 async function onLoadMore() {
     page += 1;
     try {
-        const response = await fetchBySearch(searchQuery);
+        const response = await fetchBySearch(searchQuery, page);
         const markup = createMarkup(response.hits);
         refs.galleryContainer.insertAdjacentHTML('beforeend', markup);
-        // if ()
+       
     }
     catch (error) {
         console.log(error);
