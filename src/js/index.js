@@ -6,6 +6,7 @@ import "simplelightbox/dist/simple-lightbox.min.css";
 import { refs } from './refs';
 import { fetchBySearch } from './api';
 import { createMarkup } from './createMarkup';
+import { perPage } from './api';
 
 refs.searchForm.addEventListener('submit', onFormSubmit);
 refs.loadMore.addEventListener('click', onLoadMore);
@@ -46,10 +47,18 @@ async function onFormSubmit(event) {
 
             refs.galleryContainer.insertAdjacentHTML('beforeend', markup);
 
-            refs.loadMore.classList.remove('visually-hidden');
-            refs.loadMore.style.display = 'block';
-
             const simplelightbox = new SimpleLightbox('.gallery a').refresh();
+
+            if (totalHits <= perPage) {
+                refs.loadMore.classList.add('visually-hidden');
+                refs.loadMore.style.display = 'none';
+                Notify.info('ran out of pictures in the collection');
+            } else {
+                refs.loadMore.classList.remove('visually-hidden');
+                refs.loadMore.style.display = 'block';
+            }
+
+
         }
 
     } catch (error) {
