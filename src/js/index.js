@@ -31,18 +31,23 @@ async function onFormSubmit(event) {
         Notify.success(`Hooray! We found ${totalHits} images`);
 
         refs.galleryContainer.insertAdjacentHTML('beforeend', markup);
+
         refs.loadMore.classList.remove('visually-hidden');
         refs.loadMore.style.display = 'block';
 
         const simplelightbox = new SimpleLightbox('.gallery a').refresh();
         
-    } else {
+    } else if (cards.length === 0) {
         refs.galleryContainer.innerHTML = '';
+        refs.loadMore.classList.add('visually-hidden');
+        refs.loadMore.style.display = 'none';
         Notify.failure("Sorry, there are no images matching your search query. Please try again.", error);
-        }
-    
-    } catch (error) {
-        Notify.failure("Sorry, there are no images matching your search query. Please try again.", error);
+    } else if (searchQuery.length === 0) {
+        Notify.warning('Please fill out the search field!');
+    }
+        } catch (error) {
+        // Notify.failure("Sorry, there are no images matching your search query. Please try again.", error);
+       console.log(error);
     } finally {
         refs.searchForm.reset();
 }
@@ -52,10 +57,13 @@ async function onFormSubmit(event) {
 
 async function onLoadMore() {
     page += 1;
-    await fetchBySearch(searchQuery)
-        .then(result => {
-            const markup = createMarkup(result.hits);
-            refs.galleryContainer.insertAdjacentHTML('beforeend', markup);
-
-    })
+    try {
+        const response = await fetchBySearch(searchQuery);
+        const markup = createMarkup(response.hits);
+        refs.galleryContainer.insertAdjacentHTML('beforeend', markup);
+        // if ()
+    }
+    catch (error) {
+        console.log(error);
+    } 
 }
