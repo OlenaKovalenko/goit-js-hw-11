@@ -25,7 +25,7 @@ import { Notify } from 'notiflix/build/notiflix-notify-aio';
 // }
 
 
-// let searchWord = '';
+let searchWord = '';
 
 export async function fetchBySearch(searchWord, page = 1) {
   
