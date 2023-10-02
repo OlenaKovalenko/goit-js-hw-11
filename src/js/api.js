@@ -29,7 +29,7 @@ let searchWord = '';
 
 export async function fetchBySearch(searchWord, page = 1) {
   
-    const API_KEY = '39708192-1d0c61ff60ff411770af0a0fc';
+    const API_KEY = '39706325-fc42f933f9753c8c7490c2cf4';
     const BASE_URL = 'https://pixabay.com/api/';
         
     const searchParams = new URLSearchParams({
