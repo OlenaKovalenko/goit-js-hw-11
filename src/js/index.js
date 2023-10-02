@@ -8,7 +8,7 @@ import { fetchBySearch } from './api';
 import { createMarkup } from './createMarkup';
 
 refs.searchForm.addEventListener('submit', onFormSubmit);
-refs.loadMore.addEventListener('click', onLoadMore);
+// refs.loadMore.addEventListener('click', onLoadMore);
 refs.loadMore.hidden = true;
 
 async function onFormSubmit(event) {
@@ -42,14 +42,14 @@ async function onFormSubmit(event) {
     }
 }
 
-let page = 1;  
+// let page = 1;  
 
-async function onLoadMore() {
-    page += 1;
-    fetchBySearch(page)
-        .then(result => {
-            const markup = createMarkup(result.hits);
-            refs.galleryContainer.insertAdjacentHTML('beforeend', markup);
+// async function onLoadMore() {
+//     page += 1;
+//     fetchBySearch(page)
+//         .then(result => {
+//             const markup = createMarkup(result.hits);
+//             refs.galleryContainer.insertAdjacentHTML('beforeend', markup);
 
-    })
-}
+//     })
+// }
