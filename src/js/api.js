@@ -22,7 +22,12 @@ export async function fetchBySearch(searchWord) {
     return response.data;
   
   }
-  catch (error) {
+    catch (error) {
+      Report.failure(
+'Notiflix Failure',
+'Error fetching cards info',
+'Ok',
+);
     throw error;
     
   }

@@ -11,7 +11,8 @@ refs.searchForm.addEventListener('submit', onFormSubmit);
 refs.loadMore.addEventListener('click', onLoadMore);
 refs.loadMore.style.display = 'none';
 
-export let page = 1;  
+export let page = 1;
+let searchQuery = '';
 
 async function onFormSubmit(event) {
     event.preventDefault();
@@ -19,18 +20,19 @@ async function onFormSubmit(event) {
 
     try {
     const formElement = event.currentTarget.elements;
-    const searchQuery = formElement.searchQuery.value.trim();
+    searchQuery = formElement.searchQuery.value.trim();
     
     const response = await fetchBySearch(searchQuery);
     const totalHits = response.totalHits;
     const cards = response.hits;
         
-    if (cards.length > 0) {
+    if (cards.length > 0 && searchQuery.length > 0) {
         const markup = await createMarkup(cards);
         Notify.success(`Hooray! We found ${totalHits} images`);
 
         refs.galleryContainer.insertAdjacentHTML('beforeend', markup);
         refs.loadMore.classList.remove('visually-hidden');
+        refs.loadMore.style.display = 'block';
 
         const simplelightbox = new SimpleLightbox('.gallery a').refresh();
         
@@ -41,19 +43,19 @@ async function onFormSubmit(event) {
     
     } catch (error) {
         Notify.failure("Sorry, there are no images matching your search query. Please try again.", error);
-    } finally {   
-        refs.searchForm.reset();  
+    } finally {
+        refs.searchForm.reset();
 }
 }
 
 
 
-// async function onLoadMore() {
-//     page += 1;
-//     fetchBySearch(page)
-//         .then(result => {
-//             const markup = createMarkup(result.hits);
-//             refs.galleryContainer.insertAdjacentHTML('beforeend', markup);
+async function onLoadMore() {
+    page += 1;
+    await fetchBySearch(searchQuery)
+        .then(result => {
+            const markup = createMarkup(result.hits);
+            refs.galleryContainer.insertAdjacentHTML('beforeend', markup);
 
-//     })
-// }
+    })
+}
