@@ -19,9 +19,9 @@ async function onFormSubmit(event) {
 
     try {
     const formElement = event.currentTarget.elements;
-    const searchWord = formElement.searchQuery.value.trim();
+    const searchQuery = formElement.searchQuery.value.trim();
     
-    const response = await fetchBySearch(searchWord);
+    const response = await fetchBySearch(searchQuery);
     const totalHits = response.totalHits;
     const cards = response.hits;
         
