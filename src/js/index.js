@@ -11,6 +11,8 @@ refs.searchForm.addEventListener('submit', onFormSubmit);
 // refs.loadMore.addEventListener('click', onLoadMore);
 refs.loadMore.hidden = true;
 
+let page = 1;  
+
 async function onFormSubmit(event) {
     event.preventDefault();
     refs.galleryContainer.innerHTML = '';
@@ -42,7 +44,7 @@ async function onFormSubmit(event) {
     }
 }
 
-// let page = 1;  
+
 
 // async function onLoadMore() {
 //     page += 1;
