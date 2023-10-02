@@ -1,6 +1,7 @@
-export async function createMarkup(arr) {
-    return arr.map(cardData => {
-        const { webformatURL, largeImageURL, tags, likes, views, comments, downloads } = cardData;
+import { refs } from "./refs";
+
+export function createMarkup(arr) {
+    const markup = arr.map(({ webformatURL, largeImageURL, tags, likes, views, comments, downloads }) => {
         return `<a class="gallery__link" href="${largeImageURL}">
         <div class="photo-card">
             <img src="${webformatURL}" alt="${tags}" loading="lazy" />
@@ -21,4 +22,5 @@ export async function createMarkup(arr) {
         </div>
         </a>`
     }).join('');
+    refs.galleryContainer.insertAdjacentHTML('beforeend', markup);
 }
