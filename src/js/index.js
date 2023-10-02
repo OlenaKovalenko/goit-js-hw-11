@@ -71,10 +71,10 @@ async function onLoadMore() {
         createMarkup(hits);
         simplelightbox.refresh();
         
-        if ((page - 1) * perPage >= totalHits) {
+        if ((totalHits - ((page - 1) * perPage)) <= perPage) {
+        Notify.info("We're sorry, but you've reached the end of search results.");
         refs.loadMore.classList.add('visually-hidden');
         refs.loadMore.style.display = 'none';
-        Notify.info("We're sorry, but you've reached the end of search results.");
         
     } else {
         refs.loadMore.classList.remove('visually-hidden');
