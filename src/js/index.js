@@ -8,8 +8,8 @@ import { fetchBySearch } from './api';
 import { createMarkup } from './createMarkup';
 
 refs.searchForm.addEventListener('submit', onFormSubmit);
-// refs.loadMore.addEventListener('click', onLoadMore);
-refs.loadMore.hidden = true;
+refs.loadMore.addEventListener('click', onLoadMore);
+refs.loadMore.style.display = 'none';
 
 export let page = 1;  
 

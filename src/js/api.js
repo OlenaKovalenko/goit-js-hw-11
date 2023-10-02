@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
+import { Report } from 'notiflix/build/notiflix-report-aio';
 import { page } from './index';
 
 export async function fetchBySearch(searchWord) {
@@ -23,6 +24,7 @@ export async function fetchBySearch(searchWord) {
   }
   catch (error) {
     throw error;
+    
   }
 }
 
