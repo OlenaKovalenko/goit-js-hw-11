@@ -21,12 +21,12 @@ async function onFormSubmit(event) {
     const formElement = event.currentTarget.elements;
     const searchWord = formElement.searchQuery.value.trim();
     
-    const response = await fetchBySearch(searchWord, page);
+    const response = await fetchBySearch(searchWord);
     const totalHits = response.totalHits;
     const cards = response.hits;
         
     if (cards.length > 0) {
-        const markup = await createMarkup(searchWord, cards);
+        const markup = await createMarkup(cards);
         Notify.success(`Hooray! We found ${totalHits} images`);
 
         refs.galleryContainer.insertAdjacentHTML('beforeend', markup);
@@ -41,7 +41,9 @@ async function onFormSubmit(event) {
     
     } catch (error) {
         Notify.failure("Sorry, there are no images matching your search query. Please try again.", error);
-    }
+    } finally {   
+        refs.searchForm.reset();  
+}
 }
 
 
