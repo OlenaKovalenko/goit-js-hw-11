@@ -10,6 +10,7 @@ button {
   font-size: 24px;
   margin-bottom: 15px;
 }
+
 .gallery {
   display: flex;
   flex-wrap: wrap;
@@ -19,12 +20,14 @@ button {
   margin-left: auto;
   margin-right: auto;
 }
+
 .gallery__link {
   text-decoration: none;
   color: black;
   font-size: 12px;
   width: calc((100% - 3 * 15px) / 4);
 }
+
 .photo-card {
   position: relative;
   border: 1px solid rgb(46, 47, 66, 0.1);
@@ -33,9 +36,6 @@ button {
 }
 
 .info {
-  /* position: absolute;
-  left: 0;
-  bottom: -15px; */
   display: flex;
   flex-direction: row;
   gap: 10px;
@@ -45,17 +45,11 @@ button {
   padding-left: 10px;
 }
 
-/* .info-item {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-} */
-
 img {
   display: block;
   width: 100%;
   max-width: 100%;
-  height: 200px;
+  height: 250px;
   object-fit: cover;
 }
 
@@ -79,7 +73,6 @@ img {
   margin-top: 15px;
   margin-bottom: 15px;
   padding: 10px 10px;
-  /* padding-left: 10px; */
   color: black;
   font-size: 24px;
   background-color: aqua;
