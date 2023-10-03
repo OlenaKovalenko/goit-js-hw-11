@@ -1,4 +1,3 @@
-import axios from 'axios';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import SimpleLightbox from "simplelightbox";
 import "simplelightbox/dist/simple-lightbox.min.css";
@@ -16,7 +15,6 @@ const simplelightbox = new SimpleLightbox('.gallery a');
 
 export let page = 1;
 let searchQuery = '';
-
 
 async function onFormSubmit(event) {
     event.preventDefault();
@@ -59,7 +57,7 @@ async function onFormSubmit(event) {
         }
 
     } catch (error) {
-        Notify.failure('Oops! Something went wrong. Please try again later.', error);
+        Notify.failure("Sorry, there are no images matching your search query. Please try again.", error);
     
     } finally {
         refs.searchForm.reset();
