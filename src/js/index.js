@@ -11,15 +11,6 @@ refs.searchForm.addEventListener('submit', onFormSubmit);
 refs.loadMore.addEventListener('click', onLoadMore);
 refs.loadMore.style.display = 'none';
 
-const { height: cardHeight } = document
-  .querySelector(".gallery")
-  .firstElementChild.getBoundingClientRect();
-
-window.scrollBy({
-  top: cardHeight * 2,
-  behavior: "smooth",
-});
-
 const simplelightbox = new SimpleLightbox('.gallery a');
 
 export let page = 1;
