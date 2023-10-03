@@ -20,12 +20,12 @@ export async function fetchBySearch(searchWord, page = 1) {
     const response = await axios.get(`${BASE_URL}?${searchParams}`);
     const { hits, totalHits } = response.data;
     return { hits, totalHits };
-  
-  } catch (error) {
-      Report.failure(
-'Notiflix Failure',
-'Error fetching cards info',
-'Ok', error);
-      throw error;
-  }
+
+    } catch (error) {
+    Report.failure(
+        'Notiflix Failure',
+        'Error fetching cards info',
+        'Ok', error);
+    throw error;
+    }
 }
