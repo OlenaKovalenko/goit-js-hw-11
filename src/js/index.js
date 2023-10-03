@@ -13,7 +13,6 @@ refs.loadMore.style.display = 'none';
 
 const simplelightbox = new SimpleLightbox('.gallery a');
 
-// export let page = 1;
 let page = 1;
 let searchQuery = '';
 let scrollDistance = 0;
@@ -65,7 +64,6 @@ async function onFormSubmit(event) {
 }
 }
 
-
 async function onLoadMore() {
     page += 1;
     try {
@@ -93,7 +91,6 @@ async function onLoadMore() {
         refs.loadMore.classList.remove('visually-hidden');
         refs.loadMore.style.display = 'block';
         }
-        
     }
     catch (error) {
         Notify.failure('Oops! Something went wrong. Please try again later.', error);
