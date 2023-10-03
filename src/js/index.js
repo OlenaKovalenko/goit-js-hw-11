@@ -15,6 +15,7 @@ const simplelightbox = new SimpleLightbox('.gallery a');
 
 export let page = 1;
 let searchQuery = '';
+let scrollDistance = 0;
 
 async function onFormSubmit(event) {
     event.preventDefault();
@@ -86,8 +87,10 @@ async function onLoadMore() {
           .querySelector(".gallery")
           .firstElementChild.getBoundingClientRect();
 
+      scrollDistance += cardHeight * 2;
+
           window.scrollBy({
-          top: cardHeight * 2,
+          top: scrollDistance,
           behavior: "smooth",
         });
         
