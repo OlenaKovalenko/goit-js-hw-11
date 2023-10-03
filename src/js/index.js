@@ -19,17 +19,19 @@ let searchQuery = '';
 async function onFormSubmit(event) {
     event.preventDefault();
     refs.galleryContainer.innerHTML = '';
+   
+    try {
+    const { hits, totalHits } = await fetchBySearch(searchQuery, page);
+
     const formElement = event.currentTarget.elements;
-    searchQuery = formElement.searchQuery.value.trim();
-  
-    if (searchQuery.length === 0) {
+    searchQuery = formElement.searchQuery.value.trim();  
+
+        if (searchQuery.length === 0) {
             refs.loadMore.classList.add('visually-hidden');
             refs.loadMore.style.display = 'none';
             Notify.warning('Please fill out the search field!');
             return;
-        } 
-    try {
-    const { hits, totalHits } = await fetchBySearch(searchQuery, page);
+        }
 
         if (hits.length === 0) {
         refs.galleryContainer.innerHTML = '';
