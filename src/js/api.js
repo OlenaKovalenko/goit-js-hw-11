@@ -18,7 +18,7 @@ export async function fetchBySearch(searchWord, page = 1) {
         per_page: perPage,
     });
         
-    const response = await axios.get(`${BASE_URL}?${searchParams12345}`);
+    const response = await axios.get(`${BASE_URL}?${searchParams}`);
     const { hits, totalHits } = response.data;
     return { hits, totalHits };
   
