@@ -20,12 +20,12 @@ async function onFormSubmit(event) {
     event.preventDefault();
     refs.galleryContainer.innerHTML = '';
   
-    if (!searchQuery) {
+    if (searchQuery.length === 0) {
             refs.loadMore.classList.add('visually-hidden');
             refs.loadMore.style.display = 'none';
             Notify.warning('Please fill out the search field!');
             return;
-        }
+        } 
 
     try {
     const formElement = event.currentTarget.elements;
