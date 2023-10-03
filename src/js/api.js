@@ -27,6 +27,5 @@ export async function fetchBySearch(searchWord, page = 1) {
 'Notiflix Failure',
 'Error fetching cards info',
 'Ok', error);
-    // throw error;
   }
 }
