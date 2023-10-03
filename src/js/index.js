@@ -23,22 +23,22 @@ async function onFormSubmit(event) {
     try {
     const formElement = event.currentTarget.elements;
     searchQuery = formElement.searchQuery.value.trim();  
+      
+       const { hits, totalHits } = await fetchBySearch(searchQuery, page);
 
-        if (searchQuery.length === 0) {
+       if (searchQuery.length === 0) {
             refs.loadMore.classList.add('visually-hidden');
             refs.loadMore.style.display = 'none';
             Notify.warning('Please fill out the search field!');
             return;
         }
       
-       const { hits, totalHits } = await fetchBySearch(searchQuery, page);
-      
         if (hits.length === 0) {
-        refs.galleryContainer.innerHTML = '';
-        refs.loadMore.classList.add('visually-hidden');
-        refs.loadMore.style.display = 'none';
-        Notify.failure("Sorry, there are no images matching your search query. Please try again.", error);
-        return;
+           refs.galleryContainer.innerHTML = '';
+           refs.loadMore.classList.add('visually-hidden');
+           refs.loadMore.style.display = 'none';
+           Notify.failure("Sorry, there are no images matching your search query. Please try again.", error);
+           return;
         }
        
             createMarkup(hits);
