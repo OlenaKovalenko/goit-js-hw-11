@@ -45,6 +45,17 @@ async function onFormSubmit(event) {
             Notify.success(`Hooray! We found ${totalHits} images`);
 
             simplelightbox .refresh();
+               
+            const { height: cardHeight } = document
+              .querySelector(".gallery")
+              .firstElementChild.getBoundingClientRect();
+
+              window.scrollBy({
+              top: cardHeight * 2,
+              behavior: "smooth",
+           }); 
+
+      
 
         if (totalHits <= perPage) {
             refs.loadMore.classList.add('visually-hidden');
