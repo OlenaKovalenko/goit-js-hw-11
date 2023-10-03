@@ -1,6 +1,5 @@
 import axios from 'axios';
 import { Report } from 'notiflix/build/notiflix-report-aio';
-
 export const perPage = 40;
 
 export async function fetchBySearch(searchWord, page = 1) {
