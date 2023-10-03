@@ -23,14 +23,4 @@ export function createMarkup(arr) {
         </a>`
     }).join('');
     refs.galleryContainer.insertAdjacentHTML('beforeend', markup);
-
-  const { height: cardHeight } = document
-  .querySelector(".gallery")
-  .firstElementChild.getBoundingClientRect();
-
-window.scrollBy({
-  top: cardHeight * 2,
-  behavior: "smooth",
-});
-
 }
