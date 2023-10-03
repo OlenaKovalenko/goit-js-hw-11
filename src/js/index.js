@@ -13,7 +13,8 @@ refs.loadMore.style.display = 'none';
 
 const simplelightbox = new SimpleLightbox('.gallery a');
 
-export let page = 1;
+// export let page = 1;
+let page = 1;
 let searchQuery = '';
 let scrollDistance = 0;
 
