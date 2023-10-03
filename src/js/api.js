@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { Report } from 'notiflix/build/notiflix-report-aio';
-import { page } from './index';
+// import { page } from './index';
 
 export const perPage = 40;
 
