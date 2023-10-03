@@ -81,6 +81,15 @@ async function onLoadMore() {
         const { hits, totalHits } = await fetchBySearch(searchQuery, page);
         createMarkup(hits);
         simplelightbox.refresh();
+
+        const { height: cardHeight } = document
+          .querySelector(".gallery")
+          .firstElementChild.getBoundingClientRect();
+
+          window.scrollBy({
+          top: cardHeight * 2,
+          behavior: "smooth",
+        });
         
         if ((totalHits - ((page - 1) * perPage)) <= perPage) {
         Notify.info("We're sorry, but you've reached the end of search results.");
