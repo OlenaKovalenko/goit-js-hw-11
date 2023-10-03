@@ -1,5 +1,4 @@
 import axios from 'axios';
-// import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { Report } from 'notiflix/build/notiflix-report-aio';
 
 export const perPage = 40;
@@ -27,9 +26,7 @@ export async function fetchBySearch(searchWord, page = 1) {
       Report.failure(
 'Notiflix Failure',
 'Error fetching cards info',
-'Ok',
-);
-    throw error;
-    
+'Ok', error);
+    // throw error;
   }
 }
