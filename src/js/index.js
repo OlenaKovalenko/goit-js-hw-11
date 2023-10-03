@@ -31,7 +31,7 @@ async function onFormSubmit(event) {
             Notify.warning('Please fill out the search field!');
             return;
         }
-      
+       page = 1;
        const { hits, totalHits } = await fetchBySearch(searchQuery, page);
 
         if (hits.length === 0) {
