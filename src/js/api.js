@@ -6,8 +6,8 @@ export const perPage = 40;
 
 export async function fetchBySearch(searchWord, page = 1) {
     try {
-    const API_KEY = '39708192-1d0c61ff60ff411770af0a0fc5555';
-    const BASE_URL = 'https://pixabay.com/123api/';
+    const API_KEY = '39708192-1d0c61ff60ff411770af0a0fc';
+    const BASE_URL = 'https://pixabay.com/api/';
             
     const searchParams = new URLSearchParams({
         key: API_KEY,
@@ -19,7 +19,7 @@ export async function fetchBySearch(searchWord, page = 1) {
         per_page: perPage,
     });
         
-    const response = await axios.get(`${BASE_URL}?${searchParams}`);
+    const response = await axios.get(`${BASE_URL}?${searchParams123}`);
     const { hits, totalHits } = response.data;
     return { hits, totalHits };
   
