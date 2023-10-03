@@ -21,8 +21,6 @@ async function onFormSubmit(event) {
     refs.galleryContainer.innerHTML = '';
    
     try {
-    const { hits, totalHits } = await fetchBySearch(searchQuery, page);
-
     const formElement = event.currentTarget.elements;
     searchQuery = formElement.searchQuery.value.trim();  
 
@@ -32,7 +30,9 @@ async function onFormSubmit(event) {
             Notify.warning('Please fill out the search field!');
             return;
         }
-
+      
+       const { hits, totalHits } = await fetchBySearch(searchQuery, page);
+      
         if (hits.length === 0) {
         refs.galleryContainer.innerHTML = '';
         refs.loadMore.classList.add('visually-hidden');
