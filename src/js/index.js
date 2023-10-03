@@ -87,7 +87,7 @@ async function onLoadMore() {
           .querySelector(".gallery")
           .firstElementChild.getBoundingClientRect();
 
-      scrollDistance += cardHeight * 2;
+      scrollDistance = cardHeight * 2;
 
           window.scrollBy({
           top: scrollDistance,
