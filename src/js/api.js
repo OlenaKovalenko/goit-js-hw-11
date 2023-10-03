@@ -1,13 +1,12 @@
 import axios from 'axios';
-import { Notify } from 'notiflix/build/notiflix-notify-aio';
+// import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { Report } from 'notiflix/build/notiflix-report-aio';
-// import { page } from './index';
 
 export const perPage = 40;
 
 export async function fetchBySearch(searchWord, page = 1) {
     try {
-    const API_KEY = '39708192-1d0c61ff60ff411770af0a0fc';
+    const API_KEY = '39708192-1d0c61ff60ff411770af0a0fc111';
     const BASE_URL = 'https://pixabay.com/api/';
             
     const searchParams = new URLSearchParams({
