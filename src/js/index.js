@@ -19,6 +19,8 @@ let searchQuery = '';
 async function onFormSubmit(event) {
     event.preventDefault();
     refs.galleryContainer.innerHTML = '';
+    const formElement = event.currentTarget.elements;
+    searchQuery = formElement.searchQuery.value.trim();
   
     if (searchQuery.length === 0) {
             refs.loadMore.classList.add('visually-hidden');
@@ -27,9 +29,6 @@ async function onFormSubmit(event) {
             return;
         } 
     try {
-    const formElement = event.currentTarget.elements;
-    searchQuery = formElement.searchQuery.value.trim();
-    
     const { hits, totalHits } = await fetchBySearch(searchQuery, page);
 
         if (hits.length === 0) {
