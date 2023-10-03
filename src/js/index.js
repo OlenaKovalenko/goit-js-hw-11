@@ -26,7 +26,6 @@ async function onFormSubmit(event) {
             Notify.warning('Please fill out the search field!');
             return;
         } 
-
     try {
     const formElement = event.currentTarget.elements;
     searchQuery = formElement.searchQuery.value.trim();
@@ -54,7 +53,7 @@ async function onFormSubmit(event) {
             refs.loadMore.classList.remove('visually-hidden');
             refs.loadMore.style.display = 'block';
         }
-
+      
     } catch (error) {
         Notify.failure("Sorry, there are no images matching your search query. Please try again.", error);
     
